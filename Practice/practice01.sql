@@ -91,7 +91,8 @@ order by length(department_name) desc;
 */
 select Upper(country_name), countries.country_id, locations.city
 from countries, locations
-where location_id is not null;
+where location_id is not null
+order by countries.country_name asc;
 
 /*
 문제10.
