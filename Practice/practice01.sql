@@ -102,4 +102,4 @@ select first_name, salary,
        replace(phone_number,'.', '-'),
        hire_date
 from employees
-where hire_date > '03/12/31';
+where hire_date < '03/12/31';
