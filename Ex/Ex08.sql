@@ -63,3 +63,21 @@ where salary >any (select salary
                  
 
 --all 연산자(and 연산자)
+
+                 --부서별 최고급여 받는 사원 출력
+select department_id, employee_id, first_name, salary
+from employees
+where (department_id, salary) in (select department_id, max(salary)
+                                  from employees
+                                  group by department_id);
+                                    
+--테이블 조인으로 부서별 최고급여 받는 사원출력
+select em.department_id,
+       em.first_name,
+       em.salary,
+       ms.department_id
+from employees em, (select department_id, max(salary) salary
+                    from employees
+                    group by department_id) ms
+where em.department_id = ms.department_id
+and em.salary = ms.salary;
